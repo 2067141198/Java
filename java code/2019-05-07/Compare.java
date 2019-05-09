@@ -1,8 +1,8 @@
 public class Compare{
 	public static void main(String[] args){
-		int a = 0;
-		int b = 0;
-		int c = 0;
+		int a = 4;
+		int b = 6;
+		int c = 2;
 		if(a < b){
 			if(a > c){
 				System.out.print("b" + b + " " + "a" + a + " " + "c" + c);
