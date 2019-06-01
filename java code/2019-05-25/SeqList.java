@@ -128,6 +128,20 @@ public class SeqList {
 		return Arrays.toString(Arrays.copyOf(array, size));
 	}
 	
+	//内部使用的方法
+	//无论是否需要扩容，调用这个方法后保证容量一定够用
+	private void ensureCapacity() {
+		if(size < array.length) {
+			return;
+		}
+		int newCapacity = array.length + array.length / 2;
+		int[] newArray = new int[newCapacity];
+		for(int i = 0; i < array.length; i++) {
+			newArray[i] = array[i];
+		}
+		this.array = newArray;
+	}
+	
 	public static void main(String[] args) {
 		SeqList sq = new SeqList();
 		
