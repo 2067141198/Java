@@ -21,6 +21,27 @@ public class ReverseList {
 		return newList;
 	}
 	
+	public static Node reverseList2(Node head) {
+		if(head == null) {
+			return null;
+		}
+		
+		Node node1 = null;
+		Node node2 = head;
+		Node node3 = head.next;
+		while(node2 != null) {
+			node2.next = node1;
+			
+			node1 = node2;
+			node2 = node3;
+			
+			if(node3 != null) {
+				node3 = node3.next;
+			}
+		}
+		return node1;
+	}
+	
 	public static void displayLinkedList(Node head) {
 		for(Node cur = head; cur != null; cur = cur.next) {
 			System.out.printf("(%d)-->", cur.value);
@@ -46,6 +67,8 @@ public class ReverseList {
 		
 		displayLinkedList(n1);
 		head = reverseList(n1);
+		displayLinkedList(head);
+		head = reverseList2(head);
 		displayLinkedList(head);
 	}
 }
