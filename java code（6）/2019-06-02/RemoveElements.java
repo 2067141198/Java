@@ -41,6 +41,28 @@ public class RemoveElements {
 		return head;
 	}
 	
+	public static Node removeElements2(Node head, int val) {
+		Node newList = null;
+		Node cur = head;
+		while(cur != null) {
+			Node next = cur.next;
+			if(cur.val != val) {
+				if(newList == null) {
+					cur.next = newList;
+					newList = cur;
+				}else{
+					Node last = newList;
+					while(last.next != null){
+						last = last.next;
+					}
+					last.next = cur;
+				}
+			}
+			cur = next;
+		}
+		return newList;
+	}
+	
 	public static void main(String[] args) {
 		Node head = null;
 		Node n1 = new Node(1);
