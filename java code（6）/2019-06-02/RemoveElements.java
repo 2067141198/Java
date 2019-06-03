@@ -64,6 +64,29 @@ public class RemoveElements {
 		return newList;
 	}
 	
+	public static Node removeElements3(Node head, int val) {
+		Node newList = null;
+		Node cur = head;
+		Node last = null;
+		while(cur != null) {
+			Node next = cur.next;
+			if(cur.val != val) {
+				if(newList == null) {
+					cur.next = newList;
+					newList = cur;
+				}else{
+					last.next = cur;
+				}
+			last = cur;
+			}
+			cur = next;
+		}
+		// if(last != null) {
+			// last.next = null;
+		// }
+		return newList;
+	}
+	
 	public static void main(String[] args) {
 		Node head = null;
 		Node n1 = new Node(1);
@@ -86,7 +109,7 @@ public class RemoveElements {
 		n8.next = null;
 		
 		displayList(head);
-		head = removeElements2(head, 1);
+		head = removeElements3(head, 1);
 		displayList(head);
 	}
 }
