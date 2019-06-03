@@ -56,6 +56,7 @@ public class RemoveElements {
 						last = last.next;
 					}
 					last.next = cur;
+					cur.next = null;
 				}
 			}
 			cur = next;
@@ -85,7 +86,7 @@ public class RemoveElements {
 		n8.next = null;
 		
 		displayList(head);
-		head = removeElements(head, 1);
+		head = removeElements2(head, 1);
 		displayList(head);
 	}
 }
