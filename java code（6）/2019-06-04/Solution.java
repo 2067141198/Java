@@ -29,12 +29,27 @@ public class Solution {
                 cur = cur.next;
             }
         }else{
-            for(int i = (count ) / 2; i > 0; i--) {
+            for(int i = (count + 1) / 2; i > 0; i--) {
                 cur = cur.next;
             }
         }
         return cur;
     }
+	
+	public static ListNode middleNode2(ListNode head) {
+		ListNode node1 = head;
+		ListNode node2 = head;
+		
+		while(node1 != null) {
+			node1 = node1.next;
+			if(node1 == null) {
+				return node2;
+			}
+			node2 = node2.next;
+			node1 = node1.next;
+		}
+		return node2;
+	}
 	
 	public static void main(String[] args) {
 		ListNode head = null;
@@ -54,7 +69,7 @@ public class Solution {
 		n6.next = null;
 		
 		display(head);
-		head = middleNode(head);
+		head = middleNode2(head);
 		display(head);
 	}
 }
