@@ -8,7 +8,7 @@ class ListNode {
 	}
 }
 
-public class Solution {
+public class MiddleNode {
 	public static void display(ListNode head) {
 		for(ListNode cur = head; cur != null; cur = cur.next) {
 			System.out.printf("%d-->", cur.val);
