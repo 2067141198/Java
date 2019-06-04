@@ -50,15 +50,18 @@ public class LinkedList {
 			return null;
 		}
 		Node cur = head;
-		Node last = null;
+		//Node last = null;
 		if(cur.next == null) {
 			return cur.next;
 		}else{
 			while(cur.next.next != null) {
 				cur = cur.next;
 			}
-			last = cur;
-			last.next = null;
+			
+			//last = cur;
+			//last.next = null;
+			
+			cur.next = null;
 		}
 		return head;
 	}

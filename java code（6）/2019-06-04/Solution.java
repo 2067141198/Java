@@ -4,7 +4,7 @@ class ListNode {
 	ListNode next;
 	
 	ListNode(int val) {
-		this val = val; 
+		this.val = val; 
 	}
 }
 
@@ -13,7 +13,7 @@ public class Solution {
 		for(ListNode cur = head; cur != null; cur = cur.next) {
 			System.out.printf("%d-->", cur.val);
 		}
-		System.out.printf("null");
+		System.out.println("null");
 	}
 	
     public static ListNode middleNode(ListNode head) {
@@ -25,11 +25,11 @@ public class Solution {
         }
         cur = head;
         if(count % 2 != 0) {
-            for(int i = count % 2 + 1; i > 0; i--) {
+            for(int i = count / 2; i > 0; i--) {
                 cur = cur.next;
             }
         }else{
-            for(int i = (count + 1) % 2; i > 0; i--) {
+            for(int i = (count ) / 2; i > 0; i--) {
                 cur = cur.next;
             }
         }
@@ -37,6 +37,7 @@ public class Solution {
     }
 	
 	public static void main(String[] args) {
+		ListNode head = null;
 		ListNode n1 = new ListNode(1);
 		ListNode n2 = new ListNode(2);
 		ListNode n3 = new ListNode(3);
@@ -44,12 +45,17 @@ public class Solution {
 		ListNode n5 = new ListNode(5);
 		ListNode n6 = new ListNode(6);
 		
+		head = n1;
 		n1.next = n2;
 		n2.next = n3;
 		n3.next = n4;
 		n4.next = n5;
 		n5.next = n6;
 		n6.next = null;
+		
+		display(head);
+		head = middleNode(head);
+		display(head);
 	}
 }
 
