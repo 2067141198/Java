@@ -37,7 +37,11 @@ public class LinkedList {
 	
 	//头删
 	public static Node popFront(Node head) {
-		return head;
+		if(head == null) {
+			return null;
+		}
+		Node cur = head;
+		return cur.next;
 	}
 	
 	//尾删
@@ -79,6 +83,8 @@ public class LinkedList {
 		
 		displayLinkedList(head);
 		head = pushFront(head, 3);
+		displayLinkedList(head);
+		head = popFront(head);
 		displayLinkedList(head);
 		head = popBack(head);
 		displayLinkedList(head);
