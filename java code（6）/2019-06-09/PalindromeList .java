@@ -21,12 +21,11 @@ public class PalindromeList {
         }
         while(cur != null) {
             if(cur.val != newList.val) {
-                break;
+                return false;
             }
             cur = cur.next;
             newList = newList.next;
-            return true;
         }
-        return false;
+        return true;
     }
 }
