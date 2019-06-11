@@ -1,4 +1,3 @@
-import java.util.*;
 
 class ListNode {
     int val;
@@ -8,33 +7,41 @@ class ListNode {
         this.val = val;
     }
 }
+
 public class Partition {
     public ListNode partition(ListNode pHead, int x) {
         // write code here
         ListNode newList1 = null;
         ListNode newList2 = null;
         ListNode cur = pHead;
-        ListNode last = null;
-        int tmp = 0;
-        while(x > 0) {
-            tmp = cur.val;
-            cur = cur.next;
-            x--;
-        }
-        cur = pHead;
+        ListNode last1 = null;
+        ListNode last2 = null;
         while(cur != null) {
-            ListNode next = cur.next;
-            if(cur.val < tmp) {
-                cur.next = newList1;
-                newList1 = cur;
-                last = cur;
-            }else{
-                cur.next = newList2;
-                newList2 = cur;
+            if(cur.val < x) {
+				if(newList1 == null) {
+					newList1 = cur;
+				} else {
+					last1.next = cur;
+				}
+                last1 = cur;
+            } else {
+				if(newList2 == null) {
+					newList2 = cur;
+				} else {
+					last2.next = cur;
+				}
+				last2 = cur;
             }
-            cur = next;
+            cur = cur.next;
         }
-        last.next = newList2;
-        return newList1;
+		if(newList1 == null) {
+			return newList2;
+		} else {
+			last1.next = newList2;
+			if(last2 != null) {
+				last2.next == null;
+			}
+			return newList1;
+		}
     }
 }
