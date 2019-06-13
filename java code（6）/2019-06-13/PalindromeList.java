@@ -37,6 +37,19 @@ public class PalindromeList {
 	}
 	
     public boolean chkPalindrome(ListNode A) {
-        // write code here
+        ListNode mid = getMiddle(A);
+		ListNode head2 = reverseList(mid);
+		
+		ListNode n1 = A;
+		ListNode n2 = head2;
+		
+		while(n1 != null && n2 != null) {
+			if(n1.val != n2.val) {
+				return false;
+			}
+			n1 = n1.next;
+			n2 = n2.next;
+		}
+		return true;
     }
 }
