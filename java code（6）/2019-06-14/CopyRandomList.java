@@ -5,14 +5,19 @@ class Node {
 
     public Node() {}
 
-    public Node(int _val,Node _next,Node _random) {
+    public Node(int _val) {
         val = _val;
-        next = _next;
-        random = _random;
     }
 };
 
 class Solution {
+	public static void display(Node head) {
+		for(Node cur = head; cur != null; cur = cur.next) {
+			System.out.println("(" + cur + "," + cur.val + "," + random + ") -->" );
+		}
+		System.out.println("null");
+	}
+	
     public Node copyRandomList(Node head) {
         if(head == null) {
             return null;
@@ -67,10 +72,10 @@ class Solution {
 	
 	public static void main(String[] args) {
 		Node n1 = new Node(1);
-		Node n1 = new Node(2);
-		Node n1 = new Node(3);
-		Node n1 = new Node(4);
-		Node n1 = new Node(5);
+		Node n2 = new Node(2);
+		Node n3 = new Node(3);
+		Node n4 = new Node(4);
+		Node n5 = new Node(5);
 		
 		n1.next = n2;
 		n2.next = n3;
@@ -83,6 +88,12 @@ class Solution {
 		n3.random = n3;
 		n4.random = null;
 		n5.random = n2;
+		
+		Solution solution = new Solution();
+		display(n1);
+		Node head = solution.copyRandomList(n1);
+		display(head);
+		
 	}
 }
 
