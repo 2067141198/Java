@@ -10,10 +10,10 @@ class Node {
     }
 };
 
-class Solution {
+class CopyRandomList {
 	public static void display(Node head) {
 		for(Node cur = head; cur != null; cur = cur.next) {
-			System.out.println("(" + cur + "," + cur.val + "," + random + ") -->" );
+			System.out.println("Node(" + cur + "," + cur.val + "," + cur.random + ") -->" );
 		}
 		System.out.println("null");
 	}
