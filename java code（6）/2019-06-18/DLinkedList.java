@@ -19,6 +19,9 @@ public class DLinkedList{
 	}
 	
 	public void pushFront(int val) {
-		
+		DNode node = new DNode(val);
+		node.next = head;
+		head = node;
+		size++;
 	}
 }
