@@ -39,6 +39,7 @@ public class CourseInherit {
 		arrayList.pushBack(4);
 		
 		System.out.println(arrayList.getSize());
+		System.out.println(arrayList.setSize());
 	}
 }
 
