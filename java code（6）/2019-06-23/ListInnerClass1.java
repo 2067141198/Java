@@ -1,3 +1,6 @@
+//只实现列表中的顺序表
+//包含打印的方法，不包含迭代器
+
 interface List {
 	//插入
 	void pushFront(int val);
@@ -23,16 +26,19 @@ abstract class abstractList implements List {
 	protected int size;
 	
 	@Override
+	//头插
 	public void pushFront(int val) {
 		insert(0, val);
 	}
 	
 	@Override
+	//尾插
 	public void pushBack(int val) {
 		insert(size, val);
 	}
 	
 	@Override
+	//根据下标插入
 	public void insert(int index, int val) {
 		if(index < 0 || index > size) {
 			System.out.println("下标错误！");
@@ -45,16 +51,19 @@ abstract class abstractList implements List {
 	abstract void insertInternal(int index, int val);
 	
 	@Override
+	//头删
 	public void popFront() {
 		earse(0);
 	}
 	
 	@Override
+	//尾删
 	public void popBack() {
 		earse(size);
 	}
 	
 	@Override
+	//根据下标删除
 	public void earse(int index) {
 		if(index < 0 || index > size) {
 			System.out.println("下标错误！");
@@ -113,7 +122,7 @@ class ArrayList extends abstractList implements List {
 	}
 }
 
-public class ListInnerClass {
+public class ListInnerClass1 {
 	private static void testList(List list) {
 		list.pushBack(1);
 		list.pushBack(2);
