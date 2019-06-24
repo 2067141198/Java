@@ -130,13 +130,13 @@ class LinkedList extends abstractList implements List {
 			head = head.next;
 		} else if(index == size){
 			Node cur = head;
-			for(int i = 0; i < index - 1; i++) {
+			for(int i = 1; i < index - 1; i++) {
 				cur = cur.next;
 			}
 			cur.next = null;
 		} else {
 			Node cur = head;
-			for(int i = 0; i < index - 1; i++) {
+			for(int i = 1; i < index - 1; i++) {
 				cur = cur.next;
 			}
 			cur.next = cur.next.next;
@@ -147,7 +147,7 @@ class LinkedList extends abstractList implements List {
 	@Override
 	public int get(int index) {
 		Node cur = head;
-		for(int i = 0; i < index; i++) {
+		for(int i = 1; i < index; i++) {
 			cur = cur.next;
 		}
 		return cur.val;
@@ -156,7 +156,7 @@ class LinkedList extends abstractList implements List {
 	@Override
 	public void set(int index, int val) {
 		Node cur = head;
-		for(int i = 0; i < index; i++) {
+		for(int i = 1; i < index; i++) {
 			cur = cur.next;
 		}
 		cur.val = val;
@@ -181,8 +181,8 @@ public class ListInnerClass3 {
 		list.pushBack(40); //4 3 2 1 10 20 30 40
 		list.popFront();
 		list.popBack(); // 3 2 1 10 20 30
-		list.earse(2); // 3 2 10 20 30
-		list.set(2,100); // 3 2 100 20 30
+		list.earse(2); // 3 1 10 20 30
+		list.set(3,100); // 3 1 100 20 30
 		
 		Iterator it1 = list.iterator();
 		
