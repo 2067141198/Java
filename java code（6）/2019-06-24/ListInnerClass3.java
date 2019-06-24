@@ -5,13 +5,13 @@ interface List {
 	void insert(int index, int val);
 	
 	//删除
-	// void popFront();
-	// void popBack();
-	// void earse(int index);
+	void popFront();
+	void popBack();
+	void earse(int index);
 	
 	// //根据下标查找或者修改
-	// int get(int index);
-	// void set(int index, int val);
+	int get(int index);
+	void set(int index, int val);
 	
 	//返回数据个数
 	int size();
@@ -49,27 +49,27 @@ abstract class abstractList implements List {
 	
 	abstract void insertInternal(int index, int val);
 	
-	// @Override
-	// public void popFront() {
-		// earse(0);
-	// }
+	@Override
+	public void popFront() {
+		earse(0);
+	}
 	
-	// @Override 
-	// public void popBack() {
-		// earse(size);
-	// }
+	@Override 
+	public void popBack() {
+		earse(size);
+	}
 	
-	// @Override 
-	// public void earse(int index) {
-		// if(index < 0 || index > size) {
-			// System.out.println("下标错位！");
-			// return;
-		// }
+	@Override 
+	public void earse(int index) {
+		if(index < 0 || index > size) {
+			System.out.println("下标错位！");
+			return;
+		}
 		
-		// earseInternal(index);
-	// }
+		earseInternal(index);
+	}
 	
-	// abstract void earseInternal(int index);
+	abstract void earseInternal(int index);
 	
 	@Override
 	public int size() {
@@ -124,6 +124,44 @@ class LinkedList extends abstractList implements List {
 		size++;
 	}
 	
+	@Override 
+	public void earseInternal (int index) {
+		if(index == 0) {
+			head = head.next;
+		} else if(index == size){
+			Node cur = head;
+			for(int i = 0; i < index - 1; i++) {
+				cur = cur.next;
+			}
+			cur.next = null;
+		} else {
+			Node cur = head;
+			for(int i = 0; i < index - 1; i++) {
+				cur = cur.next;
+			}
+			cur.next = cur.next.next;
+		}
+		size--;
+	}
+	
+	@Override
+	public int get(int index) {
+		Node cur = head;
+		for(int i = 0; i < index; i++) {
+			cur = cur.next;
+		}
+		return cur.val;
+	}
+	
+	@Override
+	public void set(int index, int val) {
+		Node cur = head;
+		for(int i = 0; i < index; i++) {
+			cur = cur.next;
+		}
+		cur.val = val;
+	}
+	
 	public Iterator iterator() {
 		return new LinkedListIterator();
 	}
@@ -132,16 +170,28 @@ class LinkedList extends abstractList implements List {
 
 public class ListInnerClass3 {
 	static void testList(List list) {
+		
 		list.pushFront(1);
 		list.pushFront(2);
 		list.pushFront(3);
 		list.pushFront(4);
+		list.pushBack(10);
+		list.pushBack(20);
+		list.pushBack(30);
+		list.pushBack(40); //4 3 2 1 10 20 30 40
+		list.popFront();
+		list.popBack(); // 3 2 1 10 20 30
+		list.earse(2); // 3 2 10 20 30
+		list.set(2,100); // 3 2 100 20 30
 		
 		Iterator it1 = list.iterator();
 		
 		while(it1.hasNext()) {
 			System.out.println(it1.next());
 		}
+		System.out.println("============");
+		
+		System.out.println(list.get(3));
 	}
 	
 	public static void main(String[] args) {
