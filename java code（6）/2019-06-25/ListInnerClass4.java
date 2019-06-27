@@ -129,13 +129,96 @@ class ArrayList extends abstractList implements List {
 	}
 }
 
-// class LinkedList extends abstractList implements List, Iterator {
-	// private class LinkedListIterator implements Iterator {
+class LinkedList extends abstractList implements List {
+	private class Node {
+		int val;
+		Node next;
 		
-	// }
+		Node(int val) {
+			this.val = val;
+		}
+		
+		Node(int val, Node next) {
+			this.val = val;
+			this.next = next;
+		}
+	}
 	
+	private class LinkedListIterator implements Iterator {
+		private Node cur = head;
+		
+		@Override
+		public boolean hasNext() {
+			return cur != null;
+		}
+		
+		@Override
+		public int next() {
+			int val = cur.val;
+			cur = cur.next;
+			return val;
+		}
+	}
 	
-// }
+	private Node head = null;
+	
+	@Override
+	public void insertInternal(int index, int val) {
+		if(index == 0) {
+			head = new Node(val, head);
+		} else {
+			Node cur = head;
+			for(int i = 0; i < index - 1; i++) {
+				cur = cur.next;
+			}
+			cur.next = new Node(val, cur.next);
+		}
+		size++;
+	}
+	
+	@Override
+	public void earseInternal(int index) {
+		if(index == 0) {
+			head = head.next;
+		} else if (index == size) {
+			Node cur = head;
+			for(int i = 0; i < index - 2; i++) {
+				cur = cur.next;
+			}
+			cur.next = null;
+		} else {
+			Node cur = head;
+			for(int i = 0; i < index - 2; i++) {
+				cur = cur.next;
+			}
+			cur.next = cur.next.next;
+		}
+		size--;
+	}
+	
+	@Override
+	public int get(int index) {
+		Node cur = head;
+		for(int i = 1; i < index; i++) {
+			cur = cur.next;
+		}
+		return cur.val;
+	}
+	
+	@Override
+	public void set(int index, int val) {
+		Node cur = head;
+		for(int i = 1; i < index; i++) {
+			cur = cur.next;
+		}
+		cur.val = val;
+	}
+	
+	@Override
+	public Iterator iterator() {
+		return new LinkedListIterator();
+	}
+}
 
 public class ListInnerClass4 {
 	static void testList(List list) {
@@ -148,7 +231,11 @@ public class ListInnerClass4 {
 		list.pushBack(20);
 		list.pushBack(30);
 		list.pushBack(40);
-		list.pushBack(50);
+		list.pushBack(50); //5 4 3 2 1 10 20 30 40 50
+		list.popFront();
+		list.popBack(); // 4 3 2 1 10 20 30 40 
+		list.earse(3);
+		list.insert(4, 90);
 		
 		Iterator it1 = list.iterator();
 		
@@ -159,7 +246,8 @@ public class ListInnerClass4 {
 	
 	public static void main(String[] args) {
 		testList(new ArrayList());
-		//testList(new LinkedList());
+		System.out.println("==========");
+		testList(new LinkedList());
 	}
 }
 
