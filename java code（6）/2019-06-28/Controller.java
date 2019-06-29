@@ -1,36 +1,36 @@
-class EventSet {
-	private Event[] events = new Event[100];
+class intSet {
+	private int[] ints = new int[100];
 	private int index = 0;
 	private int next = 0;
-	public void add(Event e) {
-		if(index >= events.length)
+	public void add(int e) {
+		if(index >= ints.length)
 			return; // (In real life, throw exception)
-		events[index++] = e;
+		ints[index++] = e;
 	}
-	public Event getNext() {
+	public int getNext() {
 		boolean looped = false;
 		int start = next;
 		do {
-			next = (next + 1) % events.length;
+			next = (next + 1) % ints.length;
 			// See if it has looped to the beginning:
 			if(start == next) looped = true;
 			// If it loops past start, the list
 			// is empty:
-			if((next == (start + 1) % events.length)
+			if((next == (start + 1) % ints.length)
 			&& looped)
 			return null;
-		} while(events[next] == null);
-		return events[next];
+		} while(ints[next] == null);
+		return ints[next];
 	}
 	public void removeCurrent() {
-		events[next] = null;
+		ints[next] = null;
 	}
 }
 public class Controller {
-	private EventSet es = new EventSet();	
-	public void addEvent(Event c) { es.add(c); }
+	private intSet es = new intSet();	
+	public void addint(int c) { es.add(c); }
 	public void run() {
-		Event e;
+		int e;
 		while((e = es.getNext()) != null) {
 			if(e.ready()) {
 				e.action();
