@@ -6,7 +6,7 @@ public class ListNode {
     ListNode(int x) { val = x; }
 }
 
-class Solution {
+public class OddEvenList {
     public ListNode oddEvenList(ListNode head) {
         ListNode p1 = head;
         ListNode p2 = head.next;
@@ -24,12 +24,8 @@ class Solution {
             count--;
         }
         if(nodes % 2 == 0) {
-            p1.next = p2.next;
-            p1 = p1.next;
-            p2.next = p1.next;
-            p2 = p2.next;
-            
             p1.next = head2;
+			
         } else {
             p1.next = p2.next;
             p1 = p1.next;
