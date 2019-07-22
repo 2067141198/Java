@@ -13,14 +13,15 @@ public class Dome01NumBinary {
                 num /= 2;
             }
         } else {
-            int num2 = ~num;
+            int num2 = (-num) - 1;
             while(num2 != 0) {
                 if(num2 % 2 == 1) {
-                    tmp++;
+                    tmp--;
                 }
                 num2 /= 2;
             }
-            System.out.println(num2);
+            tmp += 64;
+            //System.out.println(num2);
         }
         System.out.println(num + "的二進制中1的个数是：" + tmp);
     }
