@@ -15,5 +15,14 @@ public class Dome01PrintIndex {
             list.add(num);
         }
         System.out.println(list);
+        System.out.print("请输入你希望两个元素相加的和：");
+        int key = sc.nextInt();
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i + 1; j < list.size(); j++) {
+                if(list.get(i) + list.get(j) == key) {
+                    System.out.println("找到的下标为：（" + i + "," + j + ")");
+                }
+            }
+        }
     }
 }
