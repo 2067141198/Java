@@ -33,10 +33,13 @@ public class Dome01PrintSmallNum2 {
         for (int i = 0; i < list.size(); i++) {
             for (int j = i; j < list.size(); j++) {
                 if(list.get(i) > list.get(j)) {
-
+                    int tmp = list.get(i);
+                    list.set(i, list.get(j));
+                    list.set(j, tmp);
                 }
             }
         }
+        System.out.println(list);
 
         for (int i = 0; i < k; i++) {
             System.out.println(list.get(i));
