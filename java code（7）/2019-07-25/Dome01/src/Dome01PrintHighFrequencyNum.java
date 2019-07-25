@@ -15,6 +15,16 @@ public class Dome01PrintHighFrequencyNum {
                 }
             }
         }
+
         System.out.println(Arrays.toString(arrayCount));
+
+        int tmp = array.length / 2;
+        for (int i = 0; i < arrayCount.length; i++) {
+            if(arrayCount[i] > tmp) {
+                System.out.println(array[i]);
+                break;
+            }
+        }
+
     }
 }
