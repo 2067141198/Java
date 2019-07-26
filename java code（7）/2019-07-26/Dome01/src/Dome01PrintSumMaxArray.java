@@ -18,8 +18,8 @@ public class Dome01PrintSumMaxArray {
                 count++;
             }
         }
-        System.out.println(listSum);
-        System.out.println(count);
+        /*System.out.println(listSum);
+        System.out.println(count);*/
 
         int sumMax = 0;
         for (int i = 0; i < listSum.size(); i++) {
@@ -38,7 +38,7 @@ public class Dome01PrintSumMaxArray {
                 }
 
                 if(sum == sumMax) {
-                    System.out.println(list[i]);
+                    //System.out.println(list[i]);
                     System.out.print("{");
                     for (int k = i; k <= j; k++) {
                         if(k == j) {
