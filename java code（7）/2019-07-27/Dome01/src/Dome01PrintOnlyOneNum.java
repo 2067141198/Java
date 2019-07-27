@@ -33,6 +33,7 @@ public class Dome01PrintOnlyOneNum {
         //打印对应下标位置处元素出现的次数
         System.out.println(listAppear);
 
+        //打印创建数组中值出现了一次的元素
         for (int i = 0; i < list.size(); i++) {
             if(listAppear.get(i) == 1) {
                 System.out.println(list.get(i));
