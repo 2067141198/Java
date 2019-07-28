@@ -39,7 +39,7 @@ public class Dome01PrintSmallNum2 {
                 }
             }
         }
-        System.out.println(list);
+        System.out.println(list);        
 
         for (int i = 0; i < k; i++) {
             System.out.println(list.get(i));
