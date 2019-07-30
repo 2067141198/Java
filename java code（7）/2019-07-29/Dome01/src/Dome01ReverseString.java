@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 import static java.lang.String.*;
 
 public class Dome01ReverseString {
