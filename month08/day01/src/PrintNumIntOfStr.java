@@ -9,6 +9,7 @@ public class PrintNumIntOfStr {
         System.out.println(ch);
         System.out.println(Arrays.toString(ch));
 
+        //用来统计字符串中数字的个数
         int tmp = 0;
         for (int i = 0; i < ch.length; i++) {
             if(ch[i] <= '9' && ch[i] >= '0') {
