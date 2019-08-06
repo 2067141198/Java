@@ -12,6 +12,9 @@ public class Test {
             i %= 2;
         }
 
+        if(i < 1) {
+            System.out.println("输入的数字不是2的整数次方");
+        }
         if(i % 2 != 0) {
             System.out.println("该数不是2的整数次方");
         } else {
