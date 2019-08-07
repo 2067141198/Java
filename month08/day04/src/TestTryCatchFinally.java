@@ -5,6 +5,7 @@ public class TestTryCatchFinally {
             System.out.println(result);
         }catch (Exception e) { // 对捕获到的异常进行处理
             System.out.println("捕获的异常信息为：" + e.getMessage());
+            return;
         }finally{
             System.out.println("进入finally代码块");
         }
