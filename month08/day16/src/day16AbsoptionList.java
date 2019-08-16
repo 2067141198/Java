@@ -33,7 +33,7 @@ public class day16AbsoptionList {
                 if(mergeHead == null) {
                     mergeHead = cur1;
                 } else {
-                    mergeHead.next = cur1;
+                    last.next = cur1;
                 }
 
                 last = cur1;
@@ -43,7 +43,7 @@ public class day16AbsoptionList {
                 if(mergeHead == null) {
                     mergeHead = cur2;
                 } else {
-                    mergeHead.next = cur2;
+                    last.next = cur2;
                 }
 
                 last = cur2;
