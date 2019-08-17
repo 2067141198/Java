@@ -9,6 +9,13 @@ class Node {
     public Node(int val) {
         this.val = val;
     }
+
+    @Override
+    public String toString() {
+        return "Node{" +
+                "val=" + val +
+                '}';
+    }
 }
 
 public class day16AbsoptionList {
@@ -86,7 +93,7 @@ public class day16AbsoptionList {
         Node rhead = merge(n1,n5);
 
         for(Node cur = rhead; cur != null; cur = cur.next) {
-            System.out.println(cur.val + "->");
+            System.out.println(cur);
         }
     }
 }
