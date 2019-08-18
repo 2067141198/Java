@@ -14,4 +14,6 @@ public interface List {
     int size();
 
     boolean isEmpty();
+
+    Iterator iterator();
 }

@@ -16,13 +16,34 @@ public class day18LinkdeList implements List{
         }
     }
 
+    private class myLinkedListIterator implements Iterator {
+        private Node cur = head;
+
+        @Override
+        public boolean hasNext() {
+            return cur != null;
+        }
+
+        @Override
+        public int next() {
+            int val = cur.val;
+            cur = cur.next;
+            return val;
+        }
+
+        @Override
+        public int remove() {
+            return 0;
+        }
+    }
+
     private Node head = null;
     private Node last = null;
     private int size = 0;
 
     @Override
     public boolean add(int element) {
-        return add(0,element);
+        return add(size,element);
     }
 
     @Override
@@ -150,5 +171,10 @@ public class day18LinkdeList implements List{
             return cur;
         }
 
+    }
+
+    @Override
+    public Iterator iterator() {
+        return new myLinkedListIterator();
     }
 }
