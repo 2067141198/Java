@@ -5,6 +5,9 @@ import java.util.Iterator;
 import java.util.Random;
 
 public class Main {
+    /*static int POKECARD_NUM;
+    {POKECARD_NUM = 52;}*/
+
     //交换两个下标的扑克牌
     public static void swap(ArrayList<PokeCard> list, int i, int j) {
         PokeCard tmp = list.get(i);
@@ -14,11 +17,11 @@ public class Main {
 
     //想要定义一个随机抽取牌的方法
     /*public static void getPokeCard(ArrayList<PokeCard> list, ArrayList<PokeCard> people) {
-        Random r = new Random();
-        int cardOfA = r.nextInt(cardNum);
+        Random r = new Random(1);
+        int cardOfA = r.nextInt(POKECARD_NUM);
         people.add(list.get(cardOfA));
         list.remove(cardOfA);
-        cardNum--;
+        POKECARD_NUM--;
     }*/
 
     public static void main(String[] args) {
@@ -61,6 +64,10 @@ public class Main {
         /*//让三个人轮流抽牌，每人抽五张
         int cardNum = 52;
         for (int i = 0; i < 5; i++) {
+            getPokeCard(cards, A);
+            getPokeCard(cards, B);
+            getPokeCard(cards, C);
+
             //为 A 抽一张牌
             int cardOfA = r.nextInt(cardNum);
             A.add(cards.remove(cardOfA));
