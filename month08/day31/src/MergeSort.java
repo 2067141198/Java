@@ -20,6 +20,10 @@ public class MergeSort {
     }
 
     private static void merge(int[] array, int low, int mid, int high) {
+        //如果做小区间的最大值小于右小区间的最小值时表示low - high 区间内的元素已经有序直接返回
+        if(array[mid - 1] < array[mid]) {
+            return;
+        }
         //先计算出两个区间内的元素个数
         int length = high - low;
         //创建一个可以容纳两个区间所有元素的新数组

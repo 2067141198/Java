@@ -10,7 +10,7 @@ public class QuickSort {
             return;
         }
 
-        int pivotIndex = partition3(array, left, right);
+        int pivotIndex = partition1(array, left, right);
 
         quickSortInternal(array, left, pivotIndex - 1);
         quickSortInternal(array, pivotIndex + 1, right);

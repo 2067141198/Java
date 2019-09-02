@@ -14,12 +14,12 @@ public class TestMain {
         System.out.println("array数组归并排序后结果是：" + Arrays.toString(array));
         System.out.println("array2数组归并排序后结果是：" + Arrays.toString(array2));
         System.out.println("array3数组归并排序后结果是：" + Arrays.toString(array3));
-        System.out.println("====================================================");
+        /*System.out.println("====================================================");
         MergeSortNoR.mergeSortNoR(array);
         MergeSortNoR.mergeSortNoR(array2);
         MergeSortNoR.mergeSortNoR(array3);
         System.out.println("array数组归并排序(非递归)后结果是：" + Arrays.toString(array));
         System.out.println("array2数组归并排序(非递归)后结果是：" + Arrays.toString(array2));
-        System.out.println("array3数组归并排序(非递归)后结果是：" + Arrays.toString(array3));
+        System.out.println("array3数组归并排序(非递归)后结果是：" + Arrays.toString(array3));*/
     }
 }
