@@ -9,7 +9,7 @@ import java.util.*;
 
  */
 public class UniqueMorseRepresentations {
-    public int uniqueMorseRepresentations(String[] words) {
+    public static int uniqueMorseRepresentations(String[] words) {
         Set<String> set = new HashSet<>();
         //先创建一个map将字母及对应的摩斯码一一对应的保存下来
         Map<Character, String> map = new HashMap<>();
@@ -29,5 +29,16 @@ public class UniqueMorseRepresentations {
         }
         //set是无序不重复的类集，所以的元素个数就是所要求得的不同单词翻译的数量
         return set.size();
+    }
+
+    public static void main(String[] args) {
+        String[] words = {"gin", "zen", "gig", "msg"};
+        /*各单词翻译如下:
+        "gin" -> "--...-."
+        "zen" -> "--...-."
+        "gig" -> "--...--."
+        "msg" -> "--...--."
+        共有 2 种不同翻译, "--...-." 和 "--...--.".*/
+        System.out.println(uniqueMorseRepresentations(words));//预期结果是2
     }
 }
