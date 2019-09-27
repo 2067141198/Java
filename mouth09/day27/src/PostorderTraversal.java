@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class PostorderTraversal {
-    public static List<Integer> postorderTraversal(TreeNode root) {
+    private static List<Integer> postorderTraversal(TreeNode root) {
         List<Integer> list = new ArrayList<>();
         if(root == null) {
             return list;
@@ -15,10 +15,10 @@ public class PostorderTraversal {
                 front.right = null;
                 stack.push(front.left);
                 front.left = null;
-            } else if(front.right != null && front.left == null) {
+            } else if(front.left == null && front.right != null) {
                 stack.push(front.right);
                 front.right = null;
-            } else if(front.left != null && front.right == null) {
+            } else if(front.left != null) {
                 stack.push(front.left);
                 front.left = null;
             } else {
