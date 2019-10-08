@@ -4,7 +4,7 @@ class TreeNode {
     TreeNode right;
     TreeNode(int x) { val = x; }
 }
-
+//查询相邻结点的val值的差的绝对值，返回其最小的值
 public class MinDiffInBST {
     public static int minDiffInBST(TreeNode root) {
         if(root == null) {
