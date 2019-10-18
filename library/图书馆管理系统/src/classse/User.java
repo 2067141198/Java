@@ -2,6 +2,7 @@ package classse;
 
 import action.Actions;
 import databases.Where;
+import Exception.*;
 
 import java.util.*;
 
@@ -11,6 +12,8 @@ public abstract class User {
     private String name;
     private String role;
 
+    private static User user = null;
+
     public User() {}
 
     public User(String id, String name, String role) {
@@ -19,7 +22,21 @@ public abstract class User {
         this.role = role;
     }
 
-    private static User user = null;
+    protected static User getCurrentUser() {
+        return user;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getRole() {
+        return role;
+    }
 
     /**
      * 用户登录
@@ -150,5 +167,40 @@ public abstract class User {
         }
     }
 
+    /**
+     * 借书
+     */
+    protected void borrowedBook() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入你要借阅图书的ISBN:");
+        String ISBN = sc.nextLine();
+        try {
+            Book book = Actions.borrowedBook(user, ISBN);
+            System.out.println("《" + book.getTitle() + "》借阅成功" );
+        } catch (NoSuchBookException e) {
+            System.out.println("馆内暂时未收录该书...");
+        } catch (BorrowOutException e) {
+            System.out.println("该书已经被借完了...");
+        } catch (YetBorrowException e) {
+            System.out.println("你曾借过该书且未归还，归还后才能再次借阅...");
+        }
+    }
 
+    /**
+     * 还书
+     */
+    protected void returnBook() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入你归还图书的ISBN：");
+        String ISBN = sc.nextLine();
+
+        try {
+            Book book = Actions.returnBook(user, ISBN);
+            System.out.println("《" + book.getTitle() + "》归还成功" );
+        } catch (NoSuchBookException e) {
+            System.out.println("未查询到该ISBN的图书，请检查输入的ISBN是否有误...");
+        } catch (NoBorrowException e) {
+            System.out.println("未在你的借阅记录汇总查询到有关该ISBN图书的借阅或未归还记录，请检查输入的ISBN是否有误...");
+        }
+    }
 }

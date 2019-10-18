@@ -1,9 +1,12 @@
 package action;
 
 import classse.Book;
+import classse.Record;
 import classse.User;
 import databases.BookShelf;
-import Exception.NoSuchBookException;
+import Exception.*;
+import databases.RecordShelf;
+import databases.UserShelf;
 import databases.Where;
 
 import java.util.List;
@@ -35,5 +38,45 @@ public class Actions {
     public static List<Book> queryBookByWhere(Where<Book> where) {
         BookShelf bookShelf = BookShelf.getInstance();
         return bookShelf.queryBook(where);
+    }
+
+    public static Book borrowedBook(User user, String ISBN) throws NoSuchBookException, BorrowOutException, YetBorrowException {
+        BookShelf bookShelf = BookShelf.getInstance();
+        RecordShelf recordShelf = RecordShelf.getInstance();
+        UserShelf userShelf = UserShelf.getInstance();
+        Book book = bookShelf.search(ISBN);
+        //判断图书馆内该书的现存量是否为空
+        if(book.getExistCount() < 0) {
+            throw new BorrowOutException();
+        }
+        //判断该用户曾经借过该书且未归还
+        if(recordShelf.contains(user, ISBN)) {
+            throw new YetBorrowException();
+        }
+        book.borrowBook();
+        recordShelf.borrowBook(user, ISBN);
+        //往用户数据表中添加该用户，如果是新用户就添加，否则不添加
+        userShelf.addNextUser(user);
+        return book;
+    }
+
+    public static Book returnBook(User user, String ISBN) throws NoSuchBookException, NoBorrowException {
+        BookShelf bookShelf = BookShelf.getInstance();
+        RecordShelf recordShelf = RecordShelf.getInstance();
+        //若抛出异常说明未在书架中查到该ISBN的图书
+        Book book = bookShelf.search(ISBN);
+        recordShelf.returnBook(user, ISBN);
+        book.returnBook();
+        return book;
+    }
+
+    public static List<Record> queryAllRecord() {
+        RecordShelf recordShelf = RecordShelf.getInstance();
+        return recordShelf.getRecordList();
+    }
+
+    public static List<Record> queryIdRecord(String id) {
+        RecordShelf recordShelf = RecordShelf.getInstance();
+        return recordShelf.search(id);
     }
 }

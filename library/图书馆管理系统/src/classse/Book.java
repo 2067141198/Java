@@ -62,4 +62,13 @@ public class Book {
         allCount += count;
         existCount += count;
     }
+
+    public void borrowBook() {
+        existCount--;
+        borrowCount++;
+    }
+
+    public void returnBook() {
+        existCount++;
+    }
 }
