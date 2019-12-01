@@ -8,7 +8,16 @@ package List;
  */
 public class ListNodeAAndB {
     public static ListNode plusAB(ListNode a, ListNode b) {
-        // write code here
+        //为空判断
+        if (a == null && b == null) {
+            return null;
+        }
+        if (a == null) {
+            return b;
+        }
+        if (b == null) {
+            return a;
+        }
         //两个链表结点值和构成新链表的头结点
         ListNode resultHead = null;
         //新链表的尾节点
