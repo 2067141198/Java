@@ -47,7 +47,7 @@ public class CreateNewFileTest {
 
     @Test
     public void test1() {
-        InputStream in = CreateNewFileTest.class.getClassLoader().getResourceAsStream("test1.txt");
+        InputStream in = CreateNewFileTest.class.getClassLoader().getResourceAsStream("Files\\test1.txt");
         System.out.println(in);
     }
 }
