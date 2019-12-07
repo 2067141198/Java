@@ -3,8 +3,10 @@ import java.util.function.Function;
 public class FunctionDome {
     public static void main(String[] args) {
         convert("100", s -> Integer.parseInt(s));
+        convert("100", Integer::parseInt);
 
         convert(100, i -> String.valueOf(i));
+        //convert(100, i -> String::valueOf);          //string is not a functional interface
 
         convert("100", s -> Integer.parseInt(s), i -> String.valueOf(i + 55));
     }
